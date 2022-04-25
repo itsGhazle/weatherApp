@@ -1,0 +1,91 @@
+body {
+  font-family: sans-serif;
+}
+body {
+  background-image: url(../images/weather.jpg);
+  background-size: cover;
+}
+header {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+}
+form {
+  display: block;
+  margin: 0 auto;
+}
+h2 {
+  font-size: 18px;
+}
+button:hover {
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+}
+
+div.container {
+  background-image: linear-gradient(
+    to top,
+    #d8eeee,
+    #d8eeee 25%,
+    #64b3c9 65%,
+    #005986 90%,
+    #005986
+  );
+
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  font-family: "Noto Sans", sans-serif;
+  display: block;
+  margin: 5% auto;
+  padding: 50px;
+  max-width: 700px;
+}
+header.card {
+  background-color: #fff;
+  border-radius: 35px;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+}
+div.card-body {
+  padding: 5px;
+}
+input.inputLocation {
+  border: none;
+  width: 110%;
+}
+
+div.currentWeather {
+  text-align: center;
+  padding: 20px 0;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 3px rgb(64 60 67 / 16%);
+  width: 45%;
+}
+span.units {
+  font-size: 20px;
+  position: relative;
+  bottom: 8px;
+}
+a.degree {
+  text-decoration: none;
+  font-size: 20px;
+}
+div.forecastRow {
+  margin-top: 24px;
+}
+div.forecastCol {
+  background-color: #fff;
+  text-align: center;
+  line-height: 28px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  padding: 25px 0 25px;
+  margin: 5px;
+}
+div.footer {
+  font-family: "PT Mono", monospace;
+  text-align: center;
+  position: relative;
+  top: 35px;
+  opacity: 0.5;
+}
