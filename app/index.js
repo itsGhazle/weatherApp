@@ -15,6 +15,7 @@ function search(city) {
   axios.get(weatherUrl).then(showCurrentTemp);
 }
 function showCurrentTemp(response) {
+  console.log(response.data);
   document.querySelector(".temperature").innerHTML = Math.round(
     response.data.main.temp
   );
@@ -24,6 +25,56 @@ function showCurrentTemp(response) {
   );
   document.querySelector("#description").innerHTML =
     response.data.weather[0]["main"];
+
+  ////////// changing the background-image
+
+  let description = response.data.weather[0];
+  let background = document.querySelector("body");
+  let backgroundColor = document.querySelector("div.container");
+  if (description["description"] === "clear sky") {
+    background.style.backgroundImage =
+      "url(../images/WeatherImage_Sunny-day_3.jpg)";
+  } else if (description["description"] === "few clouds") {
+    background.style.backgroundImage =
+      "url(../images/WeatherImage_PartlyCloudy-day_2.jpg)";
+  } else if (description["description"] === "scattered clouds") {
+    background.style.backgroundImage =
+      "url(../images/WeatherImage_MostlyCloudy-night_2.jpg)";
+  } else if (description["description"] === "overcast clouds") {
+    background.style.backgroundImage =
+      "url(../images/WeatherImage_Cloudy-day_1.jpg)";
+  } else if (description["description"] === "dust") {
+    background.style.backgroundImage =
+      "url(../images/WeatherImage_BlowingSand-day_2.jpg)";
+  } else if (description["main"] === "Drizzle") {
+    background.style.backgroundImage =
+      "url(../images/WeatherImage_Drizzle-day_1.jpg)";
+  } else if (description["main"] === "Rain") {
+    background.style.backgroundImage =
+      "url(../images/WeatherImage_Drizzle-day_2.jpg)";
+  } else if (description["main"] === "Snow") {
+    background.style.backgroundImage =
+      "url(../images/WeatherImage_SnowShowers-night_2.jpg)";
+  } else if (description["main"] === "Mist") {
+    background.style.backgroundImage =
+      "url(../images/WeatherImage_Cloudy-day_1.jpg)";
+  } else {
+    background.style.backgroundImage = "url(../images/weather.jpg)";
+  }
+  if (
+    description["main"] === "Mist" ||
+    description["description"] === "overcast clouds" ||
+    description["description"] === "dust"
+  ) {
+    backgroundColor.style.backgroundImage =
+      "linear-gradient(0deg,#e5dee2,#e5dee2 20%,#aba2b4 60%,#59516e 90%,#59516e)";
+  } else if (description["description"] === "scattered clouds") {
+    backgroundColor.style.backgroundImage =
+      "linear-gradient(to bottom,#615878,#615878 20%,#464161 60%,#313050 90%,#313050)";
+  } else {
+    backgroundColor.style.backgroundImage =
+      "linear-gradient(to top,#d8eeee,#d8eeee 25%,#64b3c9 65%,#005986 90%,#005986)";
+  }
 }
 function handelSubmit(event) {
   event.preventDefault();
@@ -75,3 +126,5 @@ search("Tehran");
 
 let button = document.querySelector("#location-btn");
 button.addEventListener("click", getCurrentLocation);
+
+/////////
