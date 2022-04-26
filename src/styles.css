@@ -1,9 +1,13 @@
-body {
-  font-family: sans-serif;
+body,
+html {
+  height: 100%;
 }
 body {
   background-image: url(../images/weather.jpg);
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 header {
   text-align: center;
@@ -36,7 +40,7 @@ div.container {
   box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
   font-family: "Noto Sans", sans-serif;
   display: block;
-  margin: 5% auto;
+  margin: 5% auto 0;
   padding: 50px;
   max-width: 700px;
 }
@@ -84,8 +88,11 @@ div.forecastCol {
 }
 div.footer {
   font-family: "PT Mono", monospace;
+  font-size: 16px;
   text-align: center;
-  position: relative;
-  top: 35px;
-  opacity: 0.5;
+  display: block;
+  margin: 10px auto;
+}
+a.footer {
+  color: #000;
 }
