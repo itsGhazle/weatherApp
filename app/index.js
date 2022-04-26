@@ -47,7 +47,6 @@ function getCurrentTime(date) {
     "October",
     "November",
     "December",
-    ,
   ];
   let currentMonth = months[date.getMonth()];
 
@@ -63,14 +62,14 @@ function getCurrentTime(date) {
   return `${currentDay}, ${currentMonth} ${dates} ${currentHour}:${currentMinutes}`;
 }
 let currentTime = new Date();
-let h5 = (document.querySelector("h5").innerHTML = getCurrentTime(currentTime));
+document.querySelector("h5").innerHTML = getCurrentTime(currentTime);
 
 ////////// submit form
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handelSubmit);
 
-search("Paris");
+search("Tehran");
 
 ////////// location
 
