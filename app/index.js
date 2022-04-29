@@ -25,7 +25,9 @@ function showCurrentTemp(response) {
   );
   document.querySelector("#description").innerHTML =
     response.data.weather[0]["main"];
-
+  document.querySelector("h5").innerHTML = getCurrentTime(
+    response.data.dt * 1000
+  );
   ////////// changing the background-image
 
   let description = response.data.weather[0];
@@ -81,7 +83,8 @@ function handelSubmit(event) {
   let searchInput = document.querySelector("#search-input").value;
   search(searchInput);
 }
-function getCurrentTime(date) {
+function getCurrentTime(timestamp) {
+  let date = new Date(timestamp);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let currentDay = days[date.getDay()];
 
@@ -112,8 +115,6 @@ function getCurrentTime(date) {
   }
   return `${currentDay}, ${currentMonth} ${dates} ${currentHour}:${currentMinutes}`;
 }
-let currentTime = new Date();
-document.querySelector("h5").innerHTML = getCurrentTime(currentTime);
 
 ////////// submit form
 
