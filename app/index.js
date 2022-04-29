@@ -33,6 +33,7 @@ function showCurrentTemp(response) {
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
+  celsiusTemp = Math.round(response.data.main.temp);
   ////////// changing the background-image
 
   let description = response.data.weather[0];
@@ -120,17 +121,41 @@ function getCurrentTime(timestamp) {
   }
   return `${currentDay}, ${currentMonth} ${dates} ${currentHour}:${currentMinutes}`;
 }
+function showFahrenheite(event) {
+  event.preventDefault();
+  let currentDegree = document.querySelector("#temperature");
+  celcius.classList.remove("active");
+  fahrenheite.classList.add("active");
+  let calFahr = (celsiusTemp * 9) / 5 + 32;
+  currentDegree.innerHTML = Math.round(calFahr);
+}
+
+function showCelsius(event) {
+  event.preventDefault();
+  celcius.classList.add("active");
+  fahrenheite.classList.remove("active");
+  let currentDegree = document.querySelector("#temperature");
+
+  currentDegree.innerHTML = Math.round(celsiusTemp);
+}
 
 ////////// submit form
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handelSubmit);
 
-search("Tehran");
-
 ////////// location
 
 let button = document.querySelector("#location-btn");
 button.addEventListener("click", getCurrentLocation);
 
-/////////
+///////// conversion
+let fahrenheite = document.querySelector("#fahr-degree");
+fahrenheite.addEventListener("click", showFahrenheite);
+
+let celsiusTemp = null;
+
+let celcius = document.querySelector("#cels-degree");
+celcius.addEventListener("click", showCelsius);
+
+search("Tehran");

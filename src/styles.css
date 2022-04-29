@@ -90,6 +90,11 @@ a.degree {
   text-decoration: none;
   font-size: 20px;
 }
+a.active {
+  color: #000;
+  cursor: default;
+}
+
 div.forecastRow {
   margin-top: 24px;
 }
