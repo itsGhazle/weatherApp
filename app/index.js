@@ -15,7 +15,6 @@ function search(city) {
   axios.get(weatherUrl).then(showCurrentTemp);
 }
 function showCurrentTemp(response) {
-  console.log(response.data);
   document.querySelector(".temperature").innerHTML = Math.round(
     response.data.main.temp
   );
@@ -28,6 +27,12 @@ function showCurrentTemp(response) {
   document.querySelector("h5").innerHTML = getCurrentTime(
     response.data.dt * 1000
   );
+  document
+    .querySelector("#weather-icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
   ////////// changing the background-image
 
   let description = response.data.weather[0];

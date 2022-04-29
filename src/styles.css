@@ -78,6 +78,9 @@ div.currentWeather {
 span.temperature {
   font-weight: bold;
 }
+img.weatherIcon {
+  width: 66px;
+}
 span.units {
   font-size: 20px;
   position: relative;
