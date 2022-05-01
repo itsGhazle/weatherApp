@@ -84,6 +84,25 @@ function showCurrentTemp(response) {
       "linear-gradient(to top,#d8eeee,#d8eeee 25%,#64b3c9 65%,#005986 90%,#005986)";
   }
 }
+function displayForcast() {
+  let forecastElement = document.querySelector("#forecastWeather");
+  let forecastHtml = `<div class="row forecastRow">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach((day) => {
+    forecastHtml =
+      forecastHtml +
+      ` <div class="col forecastCol">
+            <strong>${day}</strong>
+            <br />
+            <span class="day">22°</span> / <span class="night">11°</span>
+
+            <br />
+            <i class="fa-solid fa-wind"></i>
+          </div>`;
+  });
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
+}
 function handelSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-input").value;
@@ -159,3 +178,4 @@ let celcius = document.querySelector("#cels-degree");
 celcius.addEventListener("click", showCelsius);
 
 search("Paris");
+displayForcast();
