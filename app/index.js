@@ -158,4 +158,4 @@ let celsiusTemp = null;
 let celcius = document.querySelector("#cels-degree");
 celcius.addEventListener("click", showCelsius);
 
-search("Tehran");
+search("Paris");
