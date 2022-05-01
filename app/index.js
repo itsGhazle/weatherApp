@@ -1,5 +1,4 @@
 function showPosition(position) {
-  let apiKey = "28878d57de90996180cc4ad04854a569";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
@@ -10,10 +9,14 @@ function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 function search(city) {
-  let apiKey = "28878d57de90996180cc4ad04854a569";
   let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(weatherUrl).then(showCurrentTemp);
 }
+function getForecastWeather(coordinates) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showCurrentTemp(response) {
   document.querySelector(".temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -34,6 +37,8 @@ function showCurrentTemp(response) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
   celsiusTemp = Math.round(response.data.main.temp);
+
+  getForecastWeather(response.data.coord);
   ////////// changing the background-image
 
   let description = response.data.weather[0];
@@ -84,7 +89,8 @@ function showCurrentTemp(response) {
       "linear-gradient(to top,#d8eeee,#d8eeee 25%,#64b3c9 65%,#005986 90%,#005986)";
   }
 }
-function displayForcast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecastWeather");
   let forecastHtml = `<div class="row forecastRow">`;
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
@@ -158,6 +164,8 @@ function showCelsius(event) {
   currentDegree.innerHTML = Math.round(celsiusTemp);
 }
 
+let apiKey = "28878d57de90996180cc4ad04854a569";
+
 ////////// submit form
 
 let form = document.querySelector("#search-form");
@@ -178,4 +186,3 @@ let celcius = document.querySelector("#cels-degree");
 celcius.addEventListener("click", showCelsius);
 
 search("Paris");
-displayForcast();
