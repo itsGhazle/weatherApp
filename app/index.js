@@ -96,9 +96,8 @@ function formatForecastDate(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
   let forecastDaily = response.data.daily;
-  console.log(forecastDaily);
+
   let forecastElement = document.querySelector("#forecastWeather");
   let forecastHtml = `<div class="row forecastRow">`;
 
