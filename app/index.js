@@ -36,7 +36,6 @@ function showCurrentTemp(response) {
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
-  celsiusTemp = Math.round(response.data.main.temp);
 
   getForecastWeather(response.data.coord);
   ////////// changing the background-image
@@ -56,7 +55,10 @@ function showCurrentTemp(response) {
   } else if (description["description"] === "overcast clouds") {
     background.style.backgroundImage =
       "url(../images/WeatherImage_Cloudy-day_1.jpg)";
-  } else if (description["description"] === "dust") {
+  } else if (
+    description["description"] === "dust" ||
+    description["description"] === "sand"
+  ) {
     background.style.backgroundImage =
       "url(../images/WeatherImage_BlowingSand-day_2.jpg)";
   } else if (description["main"] === "Drizzle") {
@@ -77,7 +79,8 @@ function showCurrentTemp(response) {
   if (
     description["main"] === "Mist" ||
     description["description"] === "overcast clouds" ||
-    description["description"] === "dust"
+    description["description"] === "dust" ||
+    description["description"] === "sand"
   ) {
     backgroundColor.style.backgroundImage =
       "linear-gradient(0deg,#e5dee2,#e5dee2 20%,#aba2b4 60%,#59516e 90%,#59516e)";
@@ -190,14 +193,5 @@ form.addEventListener("submit", handelSubmit);
 
 let button = document.querySelector("#location-btn");
 button.addEventListener("click", getCurrentLocation);
-
-///////// conversion
-let fahrenheite = document.querySelector("#fahr-degree");
-fahrenheite.addEventListener("click", showFahrenheite);
-
-let celsiusTemp = null;
-
-let celcius = document.querySelector("#cels-degree");
-celcius.addEventListener("click", showCelsius);
 
 search("Paris");
